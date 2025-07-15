@@ -179,9 +179,6 @@
   }
 }
 
-
-
-
 /* Animaciones personalizadas */
 @keyframes float {
   0%, 100% {
@@ -230,4 +227,29 @@
 
 .animation-delay-2000 {
   animation-delay: 2s;
+}
+/* Evita flashes durante la carga */
+html.aos-loading [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* Previene flashes durante la carga */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+@keyframes bounceRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7)); }
+  }
 }

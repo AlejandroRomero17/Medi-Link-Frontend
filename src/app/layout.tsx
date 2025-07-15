@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import "./globals.css"; // Import global styles
+import "./globals.css";
+import AOSInitializer from "@/components/shared/AOSInitializer";
+
 export const metadata: Metadata = {
   title: "Predict Health",
   description: "Aplicación de monitoreo de salud",
@@ -20,21 +22,17 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  // Aplicar clases de fuentes
                   document.documentElement.classList.add('${GeistSans.variable}', '${GeistMono.variable}');
 
-                  // Manejo del tema
                   var savedTheme = localStorage.getItem('theme');
                   var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                   var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
-                  // Aplicar tema
                   document.documentElement.classList.toggle('dark', theme === 'dark');
                   document.body.className = theme === 'dark'
                     ? 'dark:bg-background dark:text-foreground'
                     : 'bg-background text-foreground';
                 } catch (e) {
-                  // Fallback seguro
                   document.documentElement.classList.add('${GeistSans.variable}', '${GeistMono.variable}');
                   document.body.className = 'bg-background text-foreground';
                 }
@@ -43,7 +41,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <AOSInitializer /> {/* 👈 Aquí va el inicializador */}
+      </body>
     </html>
   );
 }
