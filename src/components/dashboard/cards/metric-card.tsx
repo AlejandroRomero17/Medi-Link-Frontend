@@ -2,12 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export function MetricCard({
-  title,
-  value,
-  unit,
   icon: Icon,
   status,
-  change,
 }: {
   title: string;
   value: string;

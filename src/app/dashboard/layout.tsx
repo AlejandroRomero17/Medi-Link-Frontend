@@ -1,5 +1,5 @@
-import { AuthProvider } from "@/providers/auth-provider";
-import { SidebarProvider } from "@/components/ui/sidebar";
+// import { AuthProvider } from "@/providers/auth-provider";
+// import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({
   children,

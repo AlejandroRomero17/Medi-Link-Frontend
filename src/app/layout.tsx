@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import AOSInitializer from "@/components/shared/AOSInitializer";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Predict Health",
@@ -42,8 +43,10 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
+        <Providers>
         {children}
         <AOSInitializer /> {/* 👈 Aquí va el inicializador */}
+        </Providers>
       </body>
     </html>
   );
