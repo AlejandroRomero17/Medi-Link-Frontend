@@ -1,26 +1,26 @@
 "use client";
 
-import {
-  LayoutDashboard,
-  Users,
-  Brain,
-  Calendar,
-  Settings,
-  Heart,
-  ChevronRight,
-} from "lucide-react";
+import { DoctorAvatar } from "@/components/dashboard/header/doctor-avatar";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
+  SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { DoctorAvatar } from "@/components/dashboard/header/doctor-avatar";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import {
+  Brain,
+  Calendar,
+  ChevronRight,
+  Heart,
+  LayoutDashboard,
+  Settings,
+  Users,
+} from "lucide-react";
 
 // Animaciones corregidas con tipos explícitos
 const containerVariants = {
@@ -111,8 +111,12 @@ export function DoctorSidebar() {
             <Heart className="h-5 w-5 text-white" />
           </motion.div>
           <div>
-            <h2 className="font-bold text-gray-900 text-lg">Predict Health</h2>
-            <p className="text-xs text-gray-500 font-medium">ECNT Platform</p>
+            <h2 className="font-bold text-gray-900 dark:text-white text-lg">
+              CliniData
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+              ECNT Platform
+            </p>
           </div>
         </motion.div>
       </SidebarHeader>

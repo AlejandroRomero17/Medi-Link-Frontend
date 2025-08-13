@@ -2,8 +2,6 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { Heart, Mail, ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,6 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ArrowLeft, CheckCircle, Heart, Mail } from "lucide-react";
+import { useState } from "react";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -64,9 +64,7 @@ export default function ForgotPasswordPage() {
               <Heart className="h-7 w-7 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
-                Predict Health
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900">CliniData</h1>
               <p className="text-sm text-gray-500">ECNT</p>
             </div>
           </div>

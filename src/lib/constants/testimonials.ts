@@ -1,7 +1,7 @@
 export const TESTIMONIALS = [
   {
     quote:
-      "PredictHealth ha cambiado cómo monitoreo a mis pacientes. La detección temprana me ha ayudado a prevenir varios casos de diabetes.",
+      "CliniData ha cambiado cómo monitoreo a mis pacientes. La detección temprana me ha ayudado a prevenir varios casos de diabetes.",
     author: "Dr. Roberto Mendoza",
     role: "Cardiólogo, Hospital Ángeles",
     initials: "RM",
@@ -19,7 +19,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "Como endocrinólogo en el IMSS, valoro cómo PredictHealth se integra a nuestro flujo de trabajo y da información útil para mis pacientes.",
+      "Como endocrinólogo en el IMSS, valoro cómo CliniDataintegra a nuestro flujo de trabajo y da información útil para mis pacientes.",
     author: "Dra. Laura Sánchez",
     role: "Endocrinóloga, IMSS",
     initials: "LS",

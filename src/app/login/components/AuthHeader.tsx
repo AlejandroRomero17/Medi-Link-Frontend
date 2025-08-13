@@ -7,7 +7,7 @@ export const AuthHeader = () => (
         <Heart className="h-7 w-7 text-white" />
       </div>
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Predict Health</h1>
+        <h1 className="text-2xl font-bold text-gray-900">CliniData</h1>
         <p className="text-sm text-gray-500">ECNT</p>
       </div>
     </div>

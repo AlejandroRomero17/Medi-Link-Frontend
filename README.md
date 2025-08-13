@@ -1,8 +1,8 @@
-# 🩺 PredictHealth - Monitoreo de Salud Preventivo
+# 🩺 CliniData - Monitoreo de Salud Preventivo
 
-**PredictHealth** es una plataforma de monitoreo de salud impulsada por IA, diseñada para ayudar a profesionales médicos y pacientes a prevenir enfermedades crónicas mediante análisis predictivos y alertas tempranas.
+**CliniDatas una plataforma de monitoreo de salud impulsada por IA, diseñada para ayudar a profesionales médicos y pacientes a prevenir enfermedades crónicas mediante análisis predictivos y alertas tempranas.
 
-![PredictHealth Logo](https://via.placeholder.com/150x50?text=PredictHealth+Logo)
+![CliniDatao](https://via.placeholder.com/150x50?text=ClinCliniData
 
 ---
 
@@ -52,7 +52,7 @@ npm install
 Crea un archivo `.env.local` con el siguiente contenido:
 
 ```env
-NEXT_PUBLIC_API_URL=https://api.predicthealth.com
+NEXT_PUBLIC_API_URL=https://api.CliniData
 ```
 
 4. Inicia el servidor de desarrollo:
@@ -98,8 +98,8 @@ git push origin feat/nueva-funcionalidad
 
 ## 📌 Contacto
 
-- 📧 equipo@predicthealth.com
-- 🌐 [www.predicthealth.com](https://www.predicthealth.com)
+- 📧 equipo@CliniData
+- 🌐 [www.CliniData](https://www.ClinCliniData
 
 ---
 

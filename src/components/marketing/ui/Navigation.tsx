@@ -16,7 +16,7 @@ export const Navigation = () => {
             <div className="flex items-center space-x-3">
               <Activity className="h-8 w-8 text-emerald-600 dark:text-emerald-400 transition-colors duration-300" />
               <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400 bg-clip-text text-transparent transition-all duration-300">
-                PredictHealth
+                CliniData
               </span>
             </div>
 

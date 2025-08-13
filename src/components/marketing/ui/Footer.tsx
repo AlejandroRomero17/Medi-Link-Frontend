@@ -28,7 +28,7 @@ export const Footer = () => (
         <div className="space-y-4">
           <div className="flex items-center space-x-2">
             <Heart className="h-8 w-8 text-blue-400 dark:text-blue-500" />
-            <span className="text-xl font-bold">PredictHealth</span>
+            <span className="text-xl font-bold">CliniData</span>
           </div>
           <p className="text-gray-400 dark:text-gray-300">
             Prevención de enfermedades crónicas mediante monitoreo inteligente y
@@ -61,8 +61,8 @@ export const Footer = () => (
       {/* Copyright */}
       <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center">
         <p className="text-gray-400 dark:text-gray-300">
-          &copy; {new Date().getFullYear()} PredictHealth México. Todos los
-          derechos reservados.
+          &copy; {new Date().getFullYear()} CliniDataico. Todos los derechos
+          reservados.
         </p>
       </div>
     </div>

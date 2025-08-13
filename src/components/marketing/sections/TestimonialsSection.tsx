@@ -12,7 +12,7 @@ export const TestimonialsSection = () => (
           Recomendado por profesionales de salud en México
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Descubre cómo PredictHealth está ayudando a médicos y pacientes a
+          Descubre cómo CliniData está ayudando a médicos y pacientes a
           prevenir enfermedades crónicas en nuestro país.
         </p>
       </div>

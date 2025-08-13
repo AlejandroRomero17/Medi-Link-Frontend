@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import "./globals.css";
 import AOSInitializer from "@/components/shared/AOSInitializer";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
+import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Predict Health",
+  title: "CliniData",
   description: "Aplicación de monitoreo de salud",
 };
 
@@ -44,8 +44,8 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <Providers>
-        {children}
-        <AOSInitializer /> {/* 👈 Aquí va el inicializador */}
+          {children}
+          <AOSInitializer /> {/* 👈 Aquí va el inicializador */}
         </Providers>
       </body>
     </html>
