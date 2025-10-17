@@ -1,14 +1,13 @@
 "use client";
+import { Categories } from "@/features/marketing/components/sections/Categories";
+import { FeaturedProfessionals } from "@/features/marketing/components/sections/featured-professionals";
+import { HeroSection } from "@/features/marketing/components/sections/HeroSection";
+import { HowItWorks } from "@/features/marketing/components/sections/hot-it-works";
+import { ProfessionalCTA } from "@/features/marketing/components/sections/professional-cta";
+import { Testimonials } from "@/features/marketing/components/sections/testimonials";
+import { Footer } from "@/features/marketing/components/ui/Footer";
+import { Navigation } from "@/features/marketing/components/ui/Navigation";
 import { useEffect } from "react";
-import { Navigation } from "@/components/marketing/ui/Navigation";
-import { Footer } from "@/components/marketing/ui/Footer";
-import { HeroSection } from "@/components/marketing/sections/HeroSection";
-import { UserDashboardSection } from "@/components/marketing/sections/UserDashboardSection";
-import { HealthSpecialistSection } from "@/components/marketing/sections/HealthSpecialistSection";
-import { DataFlowSection } from "@/components/marketing/sections/DataFlowSection";
-import { AISection } from "@/components/marketing/sections/AISection";
-import { TestimonialsSection } from "@/components/marketing/sections/TestimonialsSection";
-import { CTASection } from "@/components/marketing/sections/CTASection";
 
 export default function LandingPage() {
   useEffect(() => {
@@ -32,13 +31,18 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navigation />
       <HeroSection />
-      <UserDashboardSection />
-      <HealthSpecialistSection />
-      <DataFlowSection />
-      <AISection />
-      <TestimonialsSection />
-      <CTASection />
+      <Categories />
+      <HowItWorks />
+      <FeaturedProfessionals />
+      <Testimonials />
+      <ProfessionalCTA />
       <Footer />
     </div>
   );
 }
+// // src/app/page.tsx
+// import { redirect } from 'next/navigation';
+
+// export default function RootPage() {
+//   redirect('/marketing'); // o '/dashboard' según prefieras
+// }

@@ -1,8 +1,8 @@
-# 🩺 CliniData - Monitoreo de Salud Preventivo
+# 🩺 MediLink - Monitoreo de Salud Preventivo
 
-**CliniDatas una plataforma de monitoreo de salud impulsada por IA, diseñada para ayudar a profesionales médicos y pacientes a prevenir enfermedades crónicas mediante análisis predictivos y alertas tempranas.
+**MediLinks una plataforma de monitoreo de salud impulsada por IA, diseñada para ayudar a profesionales médicos y pacientes a prevenir enfermedades crónicas mediante análisis predictivos y alertas tempranas.
 
-![CliniDatao](https://via.placeholder.com/150x50?text=ClinCliniData
+![MediLinko](https://via.placeholder.com/150x50?text=ClinMediLink
 
 ---
 
@@ -52,7 +52,7 @@ npm install
 Crea un archivo `.env.local` con el siguiente contenido:
 
 ```env
-NEXT_PUBLIC_API_URL=https://api.CliniData
+NEXT_PUBLIC_API_URL=https://api.MediLink
 ```
 
 4. Inicia el servidor de desarrollo:
@@ -98,8 +98,8 @@ git push origin feat/nueva-funcionalidad
 
 ## 📌 Contacto
 
-- 📧 equipo@CliniData
-- 🌐 [www.CliniData](https://www.ClinCliniData
+- 📧 equipo@MediLink
+- 🌐 [www.MediLink](https://www.ClinMediLink
 
 ---
 

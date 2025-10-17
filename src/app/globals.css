@@ -60,109 +60,135 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Variables para tema light */
+/* ============================================
+   TEMA LIGHT - Fresco y Vibrante
+   Inspirado en: Stripe, Linear, Notion
+   ============================================ */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.875rem;
 
-  /* Colores base */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  /* Colores base - Fondo crema suave */
+  --background: 45 20% 97%;          /* Crema muy claro #faf8f5 */
+  --foreground: 240 10% 10%;         /* Negro suave */
 
-  /* Contenedores */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
+  /* Contenedores - Blanco puro sobre crema */
+  --card: 0 0% 100%;                 /* Blanco puro */
+  --card-foreground: 240 10% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 10%;
 
-  /* Componentes principales */
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
+  /* Primary - Índigo vibrante (modernidad) */
+  --primary: 250 95% 60%;            /* Índigo brillante #6366f1 */
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary - Rosa coral (calidez) */
+  --secondary: 340 82% 62%;          /* Rosa coral #f472b6 */
+  --secondary-foreground: 0 0% 100%;
+
+  /* Muted - Grises cálidos neutros */
+  --muted: 45 15% 93%;               /* Gris crema */
+  --muted-foreground: 240 5% 45%;    /* Gris medio */
+
+  /* Accent - Verde lima (energía) */
+  --accent: 84 81% 44%;              /* Verde lima #84cc16 */
+  --accent-foreground: 240 10% 10%;
+
+  /* Destructive - Rojo tomate */
+  --destructive: 0 72% 51%;          /* Rojo vibrante #dc2626 */
+  --destructive-foreground: 0 0% 100%;
 
   /* Bordes e inputs */
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: 240 6% 88%;              /* Gris suave */
+  --input: 240 6% 88%;
+  --ring: 250 95% 60%;               /* Mismo que primary */
 
-  /* Gráficos */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* Gráficos - Paleta vibrante y balanceada */
+  --chart-1: 250 95% 60%;            /* Índigo */
+  --chart-2: 340 82% 62%;            /* Rosa */
+  --chart-3: 84 81% 44%;             /* Verde lima */
+  --chart-4: 25 95% 53%;             /* Naranja */
+  --chart-5: 280 90% 60%;            /* Púrpura */
 
-  /* Sidebar */
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  /* Sidebar - Fondo índigo suave */
+  --sidebar: 250 40% 98%;            /* Índigo muy claro */
+  --sidebar-foreground: 240 10% 10%;
+  --sidebar-primary: 250 95% 60%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 250 40% 95%;
+  --sidebar-accent-foreground: 240 10% 10%;
+  --sidebar-border: 250 20% 90%;
+  --sidebar-ring: 250 95% 60%;
 
-  --color-primary: 22 163 74; /* emerald-600 */
-  --color-primary-dark: 16 185 129; /* emerald-400 */
-  --color-secondary: 37 99 235; /* blue-600 */
-  --color-secondary-dark: 96 165 250; /* blue-400 */
+  /* Colores auxiliares Tailwind */
+  --color-primary: 99 102 241;       /* indigo-500 */
+  --color-primary-dark: 129 140 248; /* indigo-400 */
+  --color-secondary: 244 114 182;    /* pink-400 */
+  --color-secondary-dark: 251 146 60; /* orange-400 */
 }
 
-/* Variables para tema dark */
+/* ============================================
+   TEMA DARK - Moderno y Sofisticado
+   Inspirado en: Vercel, GitHub, Discord
+   ============================================ */
 .dark {
-  /* Colores base */
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
+  /* Colores base - Negro verdadero */
+  --background: 0 0% 7%;             /* Negro profundo #121212 */
+  --foreground: 0 0% 95%;            /* Blanco suave */
 
-  /* Contenedores */
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
+  /* Contenedores - Gris oscuro elevado */
+  --card: 240 5% 11%;                /* Gris muy oscuro #1c1c1e */
+  --card-foreground: 0 0% 95%;
+  --popover: 240 5% 11%;
+  --popover-foreground: 0 0% 95%;
 
-  /* Componentes principales */
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
+  /* Primary - Índigo neón */
+  --primary: 250 95% 65%;            /* Índigo luminoso #818cf8 */
+  --primary-foreground: 0 0% 100%;
 
-  /* Bordes e inputs */
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  /* Secondary - Rosa neón */
+  --secondary: 340 82% 68%;          /* Rosa neón #f9a8d4 */
+  --secondary-foreground: 0 0% 10%;
 
-  /* Gráficos */
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  /* Muted - Grises oscuros */
+  --muted: 240 4% 16%;               /* Gris oscuro */
+  --muted-foreground: 240 5% 65%;    /* Gris claro */
 
-  /* Sidebar */
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Accent - Verde neón */
+  --accent: 84 81% 55%;              /* Verde lima brillante #a3e635 */
+  --accent-foreground: 0 0% 10%;
 
-  --color-primary: 16 185 129; /* emerald-400 */
-  --color-secondary: 96 165 250; /* blue-400 */
+  /* Destructive - Rojo neón */
+  --destructive: 0 72% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Bordes e inputs - Sutiles */
+  --border: 240 4% 20%;              /* Gris oscuro sutil */
+  --input: 240 4% 20%;
+  --ring: 250 95% 65%;
+
+  /* Gráficos - Neón vibrante */
+  --chart-1: 250 95% 65%;            /* Índigo neón */
+  --chart-2: 340 82% 68%;            /* Rosa neón */
+  --chart-3: 84 81% 55%;             /* Verde neón */
+  --chart-4: 25 95% 60%;             /* Naranja neón */
+  --chart-5: 280 90% 68%;            /* Púrpura neón */
+
+  /* Sidebar - Negro más profundo */
+  --sidebar: 0 0% 5%;                /* Negro más profundo */
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 250 95% 65%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 5% 13%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 240 4% 20%;
+  --sidebar-ring: 250 95% 65%;
+
+  /* Colores auxiliares Tailwind */
+  --color-primary: 129 140 248;      /* indigo-400 */
+  --color-secondary: 249 168 212;    /* pink-300 */
 }
 
-/* Estilos base */
+/* Estilos base mejorados */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -172,84 +198,239 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  /* Tipografía mejorada */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold;
+  }
+
+  /* Scrollbar estilizado */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
+  /* Selección de texto personalizada */
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary-foreground));
+  }
 }
 
-/* Animaciones personalizadas */
+/* Animaciones modernas */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-20px) rotate(2deg);
   }
 }
 
 @keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
-  33% {
-    transform: translate(30px, -20px) scale(1.1);
+  25% {
+    transform: translate(20px, -20px) scale(1.1) rotate(5deg);
   }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
+  50% {
+    transform: translate(0, -30px) scale(1.05) rotate(-5deg);
   }
-  100% {
-    transform: translate(0px, 0px) scale(1);
+  75% {
+    transform: translate(-20px, -10px) scale(1.1) rotate(3deg);
   }
 }
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 0.7;
+    opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.6));
   }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
 }
 
 .animate-blob {
-  animation: blob 8s ease-in-out infinite;
+  animation: blob 12s ease-in-out infinite;
 }
 
 .animate-pulse {
-  animation: pulse 4s ease-in-out infinite;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--primary) / 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
 }
 
 .animation-delay-2000 {
   animation-delay: 2s;
 }
+
 /* Evita flashes durante la carga */
 html.aos-loading [data-aos] {
   opacity: 1 !important;
   transform: none !important;
 }
-/* Previene flashes durante la carga */
+
 [data-aos] {
   pointer-events: none;
 }
+
 [data-aos].aos-animate {
   pointer-events: auto;
 }
+
 @keyframes bounceRight {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(5px); }
-}
-@layer utilities {
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  0%, 100% {
+    transform: translateX(0);
   }
-  @keyframes pulseGlow {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7)); }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+@layer utilities {
+  /* Gradientes de marca vibrantes */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg,
+      hsl(250 95% 60%) 0%,
+      hsl(280 90% 60%) 100%
+    );
+  }
+
+  .dark .bg-gradient-primary {
+    background: linear-gradient(135deg,
+      hsl(250 95% 65%) 0%,
+      hsl(280 90% 68%) 100%
+    );
+  }
+
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg,
+      hsl(340 82% 62%) 0%,
+      hsl(25 95% 53%) 100%
+    );
+  }
+
+  .dark .bg-gradient-secondary {
+    background: linear-gradient(135deg,
+      hsl(340 82% 68%) 0%,
+      hsl(25 95% 60%) 100%
+    );
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(135deg,
+      hsl(84 81% 44%) 0%,
+      hsl(142 76% 36%) 100%
+    );
+  }
+
+  .dark .bg-gradient-accent {
+    background: linear-gradient(135deg,
+      hsl(84 81% 55%) 0%,
+      hsl(142 76% 45%) 100%
+    );
+  }
+
+  /* Glass morphism moderno */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glass {
+    background: rgba(28, 28, 30, 0.7);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Efectos de profundidad */
+  .shadow-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .dark .shadow-glow {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+  }
+
+  /* Bordes animados */
+  .border-gradient {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      linear-gradient(135deg,
+        hsl(var(--primary)),
+        hsl(var(--secondary))
+      ) border-box;
+  }
+
+  /* Texto con gradiente */
+  .text-gradient {
+    background: linear-gradient(135deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
