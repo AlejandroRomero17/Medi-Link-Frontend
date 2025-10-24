@@ -1,6 +1,6 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { DoctorSidebar } from "./components/sidebar/doctor-sidebar";
-import { DoctorHeader } from "./components/header/doctor-header";
+import { DoctorSidebar } from "@/features/dashboard-doctor";
+import { DoctorHeader } from "@/features/dashboard-doctor";
 
 export default function DoctorDashboardLayout({
   children,

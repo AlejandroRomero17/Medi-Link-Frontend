@@ -1,6 +1,6 @@
 "use client";
 
-import { UserAvatar } from "@/components/dashboard/header/user-avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Sidebar,
   SidebarContent,
@@ -11,19 +11,19 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import {
+  Brain,
   Calendar,
   ChevronRight,
   Heart,
-  History,
   LayoutDashboard,
   Settings,
-  TrendingUp,
+  Users,
 } from "lucide-react";
 
 // Animaciones corregidas con tipos explícitos
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -32,69 +32,72 @@ const containerVariants: Variants = {
       delayChildren: 0.1,
     },
   },
-};
+} as const;
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, x: -15 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 120,
     },
   },
-};
+} as const;
 
-const logoVariants: Variants = {
+const logoVariants = {
   hidden: { scale: 0.9, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       damping: 10,
       stiffness: 150,
     },
   },
-};
+} as const;
 
 const navigationItems = [
   {
-    title: "Panel",
+    title: "Dashboard",
     icon: LayoutDashboard,
-    href: "/dashboard/user",
+    href: "/doctor/dashboard",
     active: true,
+    badge: null,
   },
   {
-    title: "Historial Médico",
-    icon: History,
-    href: "/dashboard/user/history",
+    title: "Mis Pacientes",
+    icon: Users,
+    href: "/doctor/patients",
+    badge: "12",
+  },
+  {
+    title: "Recomendaciones IA",
+    icon: Brain,
+    href: "/doctor/recommendations",
     badge: "Nuevo",
-  },
-  {
-    title: "Recomendaciones",
-    icon: TrendingUp,
-    href: "/dashboard/user/recommendations",
   },
   {
     title: "Citas",
     icon: Calendar,
-    href: "/dashboard/user/appointments",
+    href: "/doctor/appointments",
     badge: "3",
   },
   {
     title: "Configuración",
     icon: Settings,
-    href: "/dashboard/user/settings",
+    href: "/doctor/settings",
+    badge: null,
   },
 ];
 
-export function UserSidebar() {
+export function DoctorSidebar() {
   return (
-    <Sidebar className="border-r border-gray-200 bg-gradient-to-b from-white to-gray-50">
-      {/* Header con animación mejorada */}
-      <SidebarHeader className="border-b border-gray-200 p-4">
+    <Sidebar className="border-r border-gray-200 bg-gradient-to-b from-white to-gray-50 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950">
+      {/* Header actualizado con nuevo texto */}
+      <SidebarHeader className="border-b border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -103,18 +106,22 @@ export function UserSidebar() {
         >
           <motion.div
             whileHover={{ rotate: -8, scale: 1.05 }}
-            className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md"
+            className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-500 dark:to-blue-500 rounded-lg flex items-center justify-center shadow-md"
           >
             <Heart className="h-5 w-5 text-white" />
           </motion.div>
           <div>
-            <h2 className="font-bold text-gray-900 text-lg">MediLink</h2>
-            <p className="text-xs text-gray-500 font-medium">ECNT Platform</p>
+            <h2 className="font-bold text-gray-900 dark:text-white text-lg">
+              MediLink
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+              Panel Médico
+            </p>
           </div>
         </motion.div>
       </SidebarHeader>
 
-      {/* Contenido con animaciones escalonadas */}
+      {/* Contenido con animaciones */}
       <SidebarContent className="px-2 py-4">
         <motion.div
           initial="hidden"
@@ -134,11 +141,12 @@ export function UserSidebar() {
                     isActive={item.active}
                     className={cn(
                       "w-full justify-between px-3 py-3 text-sm font-medium",
-                      "transition-all duration-200 hover:bg-blue-50 hover:text-blue-600",
+                      "transition-all duration-200 hover:bg-emerald-50 hover:text-emerald-600",
+                      "dark:hover:bg-emerald-950 dark:hover:text-emerald-400",
                       "rounded-lg group",
                       item.active
-                        ? "bg-blue-50 text-blue-600 shadow-sm"
-                        : "text-gray-700"
+                        ? "bg-emerald-50 text-emerald-600 shadow-sm dark:bg-emerald-950 dark:text-emerald-400"
+                        : "text-gray-700 dark:text-gray-300"
                     )}
                   >
                     <a href={item.href}>
@@ -148,8 +156,8 @@ export function UserSidebar() {
                           className={cn(
                             "p-1.5 rounded-md",
                             item.active
-                              ? "bg-blue-100 text-blue-600"
-                              : "bg-gray-100 text-gray-600 group-hover:bg-blue-100/50"
+                              ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-900 dark:text-emerald-400"
+                              : "bg-gray-100 text-gray-600 group-hover:bg-emerald-100/50 dark:bg-slate-800 dark:text-gray-400 dark:group-hover:bg-emerald-900/50"
                           )}
                         >
                           <item.icon className="h-4 w-4" />
@@ -164,14 +172,14 @@ export function UserSidebar() {
                             className={cn(
                               "text-xs px-2 py-0.5 rounded-full",
                               item.active
-                                ? "bg-blue-100 text-blue-800"
-                                : "bg-gray-100 text-gray-800"
+                                ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300"
+                                : "bg-gray-100 text-gray-800 dark:bg-slate-800 dark:text-gray-300"
                             )}
                           >
                             {item.badge}
                           </motion.span>
                         )}
-                        <ChevronRight className="h-4 w-4 text-gray-400" />
+                        <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-600" />
                       </div>
                     </a>
                   </SidebarMenuButton>
@@ -182,14 +190,29 @@ export function UserSidebar() {
         </motion.div>
       </SidebarContent>
 
-      {/* Footer con animación mejorada */}
-      <SidebarFooter className="border-t border-gray-200 p-4">
+      {/* Footer con Avatar */}
+      <SidebarFooter className="border-t border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
         >
-          <UserAvatar />
+          <Avatar className="h-10 w-10 border-2 border-emerald-500 dark:border-emerald-400">
+            <AvatarImage src="/avatars/doctor.jpg" alt="Dra. Sarah Wilson" />
+            <AvatarFallback className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300 font-semibold">
+              SW
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
+              Dra. Sarah Wilson
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+              Cardióloga • ID: 45892
+            </p>
+          </div>
+          <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-600 flex-shrink-0" />
         </motion.div>
       </SidebarFooter>
     </Sidebar>

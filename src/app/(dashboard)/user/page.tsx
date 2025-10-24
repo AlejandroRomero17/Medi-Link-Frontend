@@ -1,7 +1,7 @@
-import { HealthSummarySection } from "./components/health-summary";
-import { AlertsSection } from "./components/alerts";
-import { RecommendationsSection } from "./components/recommendations";
-import { WeeklyProgressSection } from "./components/weekly-progress";
+import { HealthSummarySection } from "@/features/dashboard-user/components/health-summary";
+import { AlertsSection } from "@/features/dashboard-user/components/alerts";
+import { RecommendationsSection } from "@/features/dashboard-user/components/recommendations";
+import { WeeklyProgressSection } from "@/features/dashboard-user/components/weekly-progress";
 
 export default function UserDashboardPage() {
   return (

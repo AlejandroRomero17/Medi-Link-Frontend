@@ -1,6 +1,6 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { UserSidebar } from "./components/sidebar";
-import { UserHeader } from "./components/header";
+import { UserSidebar } from "@/features/dashboard-user/components/sidebar";
+import { UserHeader } from "@/features/dashboard-user/components/header";
 
 export default function UserDashboardLayout({
   children,

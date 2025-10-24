@@ -1,5 +1,5 @@
 // src/features/auth/config/auth.ts
-import type { NextAuthConfig } from "next-auth";
+import NextAuth, { type NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authConfig = {
@@ -15,13 +15,10 @@ export const authConfig = {
           return null;
         }
 
-        // Tu lógica de autenticación aquí
-        // const user = await fetch(...);
-
         // Usuario de ejemplo
         return {
           id: "1",
-          email: credentials.email,
+          email: credentials.email as string,
           name: "User",
         };
       },
@@ -42,9 +39,11 @@ export const authConfig = {
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).id = token.id;
+        session.user.id = token.id as string;
       }
       return session;
     },
   },
 } satisfies NextAuthConfig;
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);
