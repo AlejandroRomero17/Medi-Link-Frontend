@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Stethoscope, Search } from "lucide-react";
@@ -27,29 +29,6 @@ const itemVariants: Variants = {
   },
 };
 
-const imageVariants: Variants = {
-  hidden: { scale: 0.95, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.9,
-      ease: "easeOut",
-    },
-  },
-};
-
-const floatingVariants: Variants = {
-  animate: {
-    y: [0, -15, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  },
-};
-
 interface StatCardProps {
   icon: React.ElementType;
   number: string;
@@ -62,17 +41,19 @@ const StatCard = ({ icon: Icon, number, label, delay }: StatCardProps) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay, duration: 0.6 }}
-    className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl p-4 shadow-lg border border-indigo-200/30 dark:border-indigo-500/20 hover:border-indigo-300 dark:hover:border-indigo-400/40 transition-all duration-300"
+    className="bg-white dark:bg-slate-800 rounded-xl p-3 sm:p-4 shadow-lg border border-emerald-100 dark:border-emerald-900/50"
   >
-    <div className="flex items-center gap-3">
-      <div className="p-2 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-xl shadow-lg">
-        <Icon className="w-5 h-5 text-white" />
+    <div className="flex items-center gap-2 sm:gap-3">
+      <div className="p-2 bg-emerald-500 dark:bg-emerald-600 rounded-lg">
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
       <div>
-        <p className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+        <p className="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400">
           {number}
         </p>
-        <p className="text-xs text-gray-600 dark:text-gray-400">{label}</p>
+        <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">
+          {label}
+        </p>
       </div>
     </div>
   </motion.div>
@@ -92,46 +73,38 @@ export const HeroSection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-amber-50/50 via-white to-indigo-50/50 dark:from-black dark:via-gray-950 dark:to-indigo-950/30 overflow-hidden"
+      className="relative min-h-screen flex items-center py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-950 overflow-hidden"
     >
-      {/* Efectos de fondo animados */}
+      {/* Efectos de fondo */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Blob gradiente índigo-púrpura */}
+        {/* Blob esmeralda */}
         <motion.div
-          className="absolute top-20 -left-40 w-[500px] h-[500px] bg-gradient-to-br from-indigo-400/40 via-purple-400/30 to-pink-400/20 dark:from-indigo-600/30 dark:via-purple-600/20 dark:to-pink-600/10 rounded-full blur-3xl"
+          className="absolute top-20 -left-40 w-[400px] h-[400px] bg-emerald-500/20 dark:bg-emerald-500/10 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.4, 0.6, 0.4],
-            rotate: [0, 90, 0],
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
-            duration: 10,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
 
-        {/* Blob gradiente rosa-naranja */}
+        {/* Blob azul */}
         <motion.div
-          className="absolute bottom-20 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-pink-400/40 via-orange-400/30 to-lime-400/20 dark:from-pink-600/30 dark:via-orange-600/20 dark:to-lime-600/10 rounded-full blur-3xl"
+          className="absolute bottom-20 -right-40 w-[400px] h-[400px] bg-blue-500/20 dark:bg-blue-500/10 rounded-full blur-3xl"
           animate={{
-            scale: [1.3, 1, 1.3],
-            opacity: [0.4, 0.6, 0.4],
-            rotate: [0, -90, 0],
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
-            duration: 10,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 1.5,
+            delay: 1,
           }}
         />
-
-        {/* Grid pattern sutil */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#6366f112_1px,transparent_1px),linear-gradient(to_bottom,#6366f112_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#818cf815_1px,transparent_1px),linear-gradient(to_bottom,#818cf815_1px,transparent_1px)] bg-[size:32px_32px]" />
-
-        {/* Efecto de luz superior */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-indigo-200/30 via-transparent to-transparent dark:from-indigo-500/10 blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -139,17 +112,17 @@ export const HeroSection = () => {
           initial="hidden"
           animate={controls}
           variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         >
           {/* Contenido de texto */}
-          <div className="text-left space-y-8 order-2 lg:order-1">
+          <div className="text-left space-y-6 sm:space-y-8 order-2 lg:order-1">
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-950/50 dark:to-purple-950/50 rounded-full border border-indigo-300/50 dark:border-indigo-500/30 shadow-lg shadow-indigo-500/10"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 dark:bg-emerald-950 rounded-full border border-emerald-300 dark:border-emerald-700"
             >
-              <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-pulse shadow-lg shadow-indigo-500/50" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Plataforma de Contratación Médica
+              <div className="w-2 h-2 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
+                Plataforma de Reservación Médica
               </span>
             </motion.div>
 
@@ -159,11 +132,11 @@ export const HeroSection = () => {
             >
               Conecta con los{" "}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  mejores profesionistas
+                <span className="text-emerald-600 dark:text-emerald-400">
+                  mejores especialistas
                 </span>
                 <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full shadow-lg shadow-indigo-500/50"
+                  className="absolute -bottom-2 left-0 right-0 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
                   transition={{ delay: 1, duration: 0.8 }}
@@ -174,14 +147,14 @@ export const HeroSection = () => {
 
             <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl"
+              className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl"
             >
-              Encuentra y contrata médicos, enfermeras, terapeutas y
+              Encuentra y agenda citas con médicos, enfermeras, terapeutas y
               especialistas verificados. La forma más{" "}
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              <span className="font-semibold text-emerald-600 dark:text-emerald-400">
                 rápida y segura
               </span>{" "}
-              de construir tu equipo de salud.
+              de cuidar tu salud.
             </motion.p>
 
             <motion.div
@@ -190,34 +163,35 @@ export const HeroSection = () => {
             >
               <Button
                 size="lg"
-                className="group relative bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 dark:from-indigo-500 dark:via-purple-500 dark:to-pink-500 dark:hover:from-indigo-600 dark:hover:via-purple-600 dark:hover:to-pink-600 text-white px-8 py-6 text-lg font-bold rounded-xl shadow-2xl shadow-indigo-500/40 dark:shadow-indigo-400/30 transition-all duration-300 overflow-hidden border-0"
+                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg"
                 asChild
               >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
+                <motion.a
+                  href="/register"
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="flex items-center justify-center"
                 >
-                  Contratar Profesionistas
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
+                  Agendar Cita
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </motion.a>
               </Button>
 
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm text-gray-900 dark:text-white text-lg font-bold rounded-xl border-2 border-indigo-200 dark:border-indigo-500/30 hover:border-indigo-400 dark:hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-all duration-300 shadow-lg"
+                className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-8 py-6 text-lg font-semibold rounded-xl border-2 border-gray-300 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700"
                 asChild
               >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
+                <motion.a
+                  href="/search"
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="flex items-center justify-center"
                 >
                   <Search className="mr-2 w-5 h-5" />
-                  Buscar Profesionales
-                </motion.div>
+                  Buscar Especialistas
+                </motion.a>
               </Button>
             </motion.div>
 
@@ -229,7 +203,7 @@ export const HeroSection = () => {
               <StatCard
                 icon={Users}
                 number="5K+"
-                label="Profesionistas"
+                label="Especialistas"
                 delay={0.8}
               />
               <StatCard
@@ -249,46 +223,54 @@ export const HeroSection = () => {
 
           {/* Imagen y tarjetas flotantes */}
           <motion.div
-            variants={imageVariants}
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
             className="order-1 lg:order-2 relative flex justify-center lg:justify-end"
           >
             <motion.div
-              variants={floatingVariants}
-              animate="animate"
-              className="relative w-full max-w-[220px] sm:max-w-[300px] md:max-w-md lg:max-w-[600px]"
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[550px]"
             >
               {/* Imagen principal */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80 dark:border-gray-800/80 backdrop-blur-sm">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
                 <Image
                   src="/assets/landing/img_profesionistas.png"
-                  alt="Profesionistas de salud"
+                  alt="Especialistas de salud"
                   width={600}
                   height={700}
                   className="w-full h-auto object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-purple-900/20 to-transparent dark:from-black/80 dark:via-indigo-950/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 via-transparent to-transparent dark:from-black/60" />
               </div>
 
-              {/* Tarjeta flotante 1 - Índigo */}
+              {/* Tarjeta flotante 1 */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.5, duration: 0.6 }}
-                className="absolute -left-2 sm:-left-4 top-1/4 lg:top-1/3 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg rounded-2xl p-3 sm:p-4 shadow-2xl border border-indigo-200/50 dark:border-indigo-500/30 w-[180px] sm:w-[200px] hover:scale-105 transition-transform duration-300"
+                className="absolute -left-4 top-1/3 bg-white dark:bg-slate-800 rounded-2xl p-3 sm:p-4 shadow-2xl border-2 border-emerald-100 dark:border-emerald-900/50 w-[160px] sm:w-[200px]"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-indigo-500/30">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-500 dark:bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <Stethoscope className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
                       Dra. María López
                     </p>
-                    <p className="text-[10px] sm:text-xs text-indigo-600 dark:text-indigo-400 font-medium mb-1">
+                    <p className="text-[10px] sm:text-xs text-emerald-600 dark:text-emerald-400 font-medium">
                       Cardióloga
                     </p>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mt-1">
                       <span className="text-yellow-500 text-sm">★</span>
                       <span className="text-xs font-bold text-gray-900 dark:text-white">
                         4.9
@@ -301,22 +283,22 @@ export const HeroSection = () => {
                 </div>
               </motion.div>
 
-              {/* Tarjeta flotante 2 - Rosa/Púrpura */}
+              {/* Tarjeta flotante 2 */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.8, duration: 0.6 }}
-                className="absolute -right-4 bottom-1/4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg rounded-2xl p-4 shadow-2xl border border-pink-200/50 dark:border-pink-500/30 max-w-[200px] hover:scale-105 transition-transform duration-300"
+                className="absolute -right-4 bottom-1/4 bg-white dark:bg-slate-800 rounded-2xl p-3 sm:p-4 shadow-2xl border-2 border-blue-100 dark:border-blue-900/50 w-[160px] sm:w-[200px]"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 via-orange-500 to-lime-500 rounded-full flex items-center justify-center shadow-lg shadow-pink-500/30">
-                    <Users className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500 dark:bg-blue-600 rounded-full flex items-center justify-center">
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900 dark:text-white">
+                    <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                       Dr. Juan Pérez
                     </p>
-                    <p className="text-xs text-pink-600 dark:text-pink-400 font-medium">
+                    <p className="text-[10px] sm:text-xs text-blue-600 dark:text-blue-400 font-medium">
                       Cirujano
                     </p>
                     <div className="flex items-center gap-1 mt-1">
@@ -332,11 +314,8 @@ export const HeroSection = () => {
                 </div>
               </motion.div>
 
-              {/* Glow effect con nuevos colores */}
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/30 via-purple-400/20 to-pink-400/30 dark:from-indigo-600/20 dark:via-purple-600/10 dark:to-pink-600/20 rounded-3xl blur-3xl -z-10 animate-pulse" />
-
-              {/* Ring decorativo */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:from-indigo-600 dark:via-purple-600 dark:to-pink-600 rounded-3xl opacity-20 dark:opacity-10 blur-2xl -z-20" />
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-emerald-500/20 dark:bg-emerald-500/10 rounded-3xl blur-3xl -z-10" />
             </motion.div>
           </motion.div>
         </motion.div>

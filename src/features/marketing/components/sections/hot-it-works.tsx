@@ -1,4 +1,7 @@
+"use client";
+
 import { Search, UserCheck, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -25,44 +28,58 @@ export function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="py-20 md:py-28 bg-muted/40 dark:bg-muted/10 transition-colors duration-300"
+      className="py-16 sm:py-20 md:py-28 bg-white dark:bg-slate-950"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gradient mb-4">
-            Cómo funciona
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 sm:mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Cómo{" "}
+            <span className="text-emerald-600 dark:text-emerald-400">
+              funciona
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Tres simples pasos para conectar con tu especialista.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid de pasos */}
-        <div className="grid gap-10 sm:gap-12 md:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={step.title}
-              className="relative flex flex-col items-center text-center bg-card/60 dark:bg-card/30 border border-border rounded-2xl p-8 shadow-sm hover:shadow-glow transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ y: -8 }}
+              className="relative flex flex-col items-center text-center bg-gray-50 dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 rounded-2xl p-6 sm:p-8 hover:border-emerald-300 dark:hover:border-emerald-700 transition-all duration-300 hover:shadow-xl"
             >
               {/* Círculo principal con ícono */}
-              <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-primary text-primary-foreground shadow-lg">
-                <step.icon className="h-10 w-10" />
+              <div className="mb-6 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-emerald-600 dark:bg-emerald-500 text-white shadow-lg">
+                <step.icon className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
 
               {/* Número decorativo */}
-              <div className="absolute -top-4 -right-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg">
+              <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 dark:bg-blue-600 text-white font-bold text-lg shadow-lg">
                 {index + 1}
               </div>
 
               {/* Texto */}
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">
                 {step.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-pretty">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                 {step.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
