@@ -1,13 +1,19 @@
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/services/auth-service";
+import { auth } from "@/features/auth/config/auth";
 
 export default async function DashboardPage() {
-  const user = await getCurrentUser();
+  const session = await auth();
 
-  if (!user) {
-    redirect("/auth/login");
+  if (!session?.user) {
+    redirect("/login");
   }
 
-  // Actualiza las rutas según la nueva estructura
-  redirect(user.role === "doctor" ? "/dashboard/doctor" : "/dashboard/user");
+  // Redirigir según el rol del usuario
+  const userRole = session.user.role || "user";
+  
+  if (userRole === "doctor") {
+    redirect("/doctor");
+  } else {
+    redirect("/user");
+  }
 }

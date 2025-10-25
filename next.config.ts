@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
 
+  
   pageExtensions: ["tsx", "jsx", "js", "ts"],
 
   images: {
@@ -15,4 +15,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig; // Cambia module.exports por export default
+export default nextConfig;
