@@ -1,3 +1,4 @@
+//src\app\(dashboard)\user\layout.tsx
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { UserSidebar } from "@/features/dashboard-user/components/sidebar";
 import { UserHeader } from "@/features/dashboard-user/components/header";

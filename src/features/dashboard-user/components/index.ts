@@ -1,6 +1,7 @@
-﻿export { Alerts } from './alerts';
-export { Header } from './header';
-export { HealthSummary } from './health-summary';
-export { Recommendations } from './recommendations';
-export { Sidebar } from './sidebar';
-export { WeeklyProgress } from './weekly-progress';
+﻿// src/features/dashboard-user/components/index.ts
+export { AlertsSection } from './alerts';
+export { UserHeader } from './header';
+export { HealthSummarySection } from './health-summary';
+export { RecommendationsSection } from './recommendations';
+export { UserSidebar } from './sidebar';
+export { WeeklyProgressSection } from './weekly-progress';

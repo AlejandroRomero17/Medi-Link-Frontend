@@ -11,19 +11,18 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
-  Brain,
   Calendar,
   ChevronRight,
   Heart,
+  History,
   LayoutDashboard,
   Settings,
-  Users,
+  TrendingUp,
 } from "lucide-react";
 
-// Animaciones corregidas con tipos explícitos
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -32,71 +31,67 @@ const containerVariants = {
       delayChildren: 0.1,
     },
   },
-} as const;
+};
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, x: -15 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      type: "spring" as const,
+      type: "spring",
       stiffness: 120,
     },
   },
-} as const;
+};
 
-const logoVariants = {
+const logoVariants: Variants = {
   hidden: { scale: 0.9, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
     transition: {
-      type: "spring" as const,
+      type: "spring",
       damping: 10,
       stiffness: 150,
     },
   },
-} as const;
+};
 
 const navigationItems = [
   {
-    title: "Dashboard",
+    title: "Panel",
     icon: LayoutDashboard,
-    href: "/doctor/dashboard",
+    href: "/dashboard/user",
     active: true,
-    badge: null,
   },
   {
-    title: "Mis Pacientes",
-    icon: Users,
-    href: "/doctor/patients",
-    badge: "12",
-  },
-  {
-    title: "Recomendaciones IA",
-    icon: Brain,
-    href: "/doctor/recommendations",
+    title: "Historial Médico",
+    icon: History,
+    href: "/dashboard/user/history",
     badge: "Nuevo",
+  },
+  {
+    title: "Recomendaciones",
+    icon: TrendingUp,
+    href: "/dashboard/user/recommendations",
   },
   {
     title: "Citas",
     icon: Calendar,
-    href: "/doctor/appointments",
+    href: "/dashboard/user/appointments",
     badge: "3",
   },
   {
     title: "Configuración",
     icon: Settings,
-    href: "/doctor/settings",
-    badge: null,
+    href: "/dashboard/user/settings",
   },
 ];
 
-export function DoctorSidebar() {
+export function UserSidebar() {
   return (
     <Sidebar className="border-r border-gray-200 bg-gradient-to-b from-white to-gray-50 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950">
-      {/* Header actualizado con nuevo texto */}
       <SidebarHeader className="border-b border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           initial="hidden"
@@ -115,13 +110,12 @@ export function DoctorSidebar() {
               MediLink
             </h2>
             <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-              Panel Médico
+              Mi Salud
             </p>
           </div>
         </motion.div>
       </SidebarHeader>
 
-      {/* Contenido con animaciones */}
       <SidebarContent className="px-2 py-4">
         <motion.div
           initial="hidden"
@@ -141,11 +135,11 @@ export function DoctorSidebar() {
                     isActive={item.active}
                     className={cn(
                       "w-full justify-between px-3 py-3 text-sm font-medium",
-                      "transition-all duration-200 hover:bg-emerald-50 hover:text-emerald-600",
-                      "dark:hover:bg-emerald-950 dark:hover:text-emerald-400",
+                      "transition-all duration-200 hover:bg-blue-50 hover:text-blue-600",
+                      "dark:hover:bg-blue-950 dark:hover:text-blue-400",
                       "rounded-lg group",
                       item.active
-                        ? "bg-emerald-50 text-emerald-600 shadow-sm dark:bg-emerald-950 dark:text-emerald-400"
+                        ? "bg-blue-50 text-blue-600 shadow-sm dark:bg-blue-950 dark:text-blue-400"
                         : "text-gray-700 dark:text-gray-300"
                     )}
                   >
@@ -156,8 +150,8 @@ export function DoctorSidebar() {
                           className={cn(
                             "p-1.5 rounded-md",
                             item.active
-                              ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-900 dark:text-emerald-400"
-                              : "bg-gray-100 text-gray-600 group-hover:bg-emerald-100/50 dark:bg-slate-800 dark:text-gray-400 dark:group-hover:bg-emerald-900/50"
+                              ? "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400"
+                              : "bg-gray-100 text-gray-600 group-hover:bg-blue-100/50 dark:bg-slate-800 dark:text-gray-400 dark:group-hover:bg-blue-900/50"
                           )}
                         >
                           <item.icon className="h-4 w-4" />
@@ -172,7 +166,7 @@ export function DoctorSidebar() {
                             className={cn(
                               "text-xs px-2 py-0.5 rounded-full",
                               item.active
-                                ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300"
+                                ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
                                 : "bg-gray-100 text-gray-800 dark:bg-slate-800 dark:text-gray-300"
                             )}
                           >
@@ -190,7 +184,6 @@ export function DoctorSidebar() {
         </motion.div>
       </SidebarContent>
 
-      {/* Footer con Avatar */}
       <SidebarFooter className="border-t border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           whileHover={{ scale: 1.02 }}
@@ -198,18 +191,18 @@ export function DoctorSidebar() {
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
         >
-          <Avatar className="h-10 w-10 border-2 border-emerald-500 dark:border-emerald-400">
-            <AvatarImage src="/avatars/doctor.jpg" alt="Dra. Sarah Wilson" />
-            <AvatarFallback className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300 font-semibold">
-              SW
+          <Avatar className="h-10 w-10 border-2 border-blue-500 dark:border-blue-400">
+            <AvatarImage src="/avatars/user.jpg" alt="Usuario" />
+            <AvatarFallback className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 font-semibold">
+              JD
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
-              Dra. Sarah Wilson
+              John Doe
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-              Cardióloga • ID: 45892
+              Paciente • Ver perfil
             </p>
           </div>
           <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-600 flex-shrink-0" />

@@ -1,9 +1,19 @@
-﻿import { auth } from '@/features/auth/config/auth';
+﻿// ============================================
+// 1. src/app/api/auth/[...nextauth]/route.ts
+// ============================================
+import { handlers } from "@/features/auth/config/auth";
+
+export const { GET, POST } = handlers;
+
+// ============================================
+// 2. src/middleware.ts
+// ============================================
+import { auth } from '@/features/auth/config/auth';
 import { NextResponse } from 'next/server';
 
 export default auth((req) => {
-  const token = req.auth;
-  const isAuth = !!token;
+  const session = req.auth;
+  const isAuth = !!session;
   const isAuthPage = req.nextUrl.pathname.startsWith('/login') || 
                      req.nextUrl.pathname.startsWith('/register');
   const isDashboard = req.nextUrl.pathname.startsWith('/dashboard');
@@ -20,13 +30,13 @@ export default auth((req) => {
 
   // Control de roles
   if (req.nextUrl.pathname.startsWith('/dashboard/doctor')) {
-    if (token?.role !== 'doctor') {
+    if (session?.user?.role !== 'doctor') {
       return NextResponse.redirect(new URL('/dashboard/user', req.url));
     }
   }
 
   if (req.nextUrl.pathname.startsWith('/dashboard/user')) {
-    if (token?.role !== 'user') {
+    if (session?.user?.role !== 'user') {
       return NextResponse.redirect(new URL('/dashboard/doctor', req.url));
     }
   }
