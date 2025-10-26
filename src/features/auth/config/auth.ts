@@ -15,11 +15,12 @@ export const authConfig = {
           return null;
         }
 
-        // Usuario de ejemplo
+        // Usuario de ejemplo - aquí deberías validar contra tu API
         return {
           id: "1",
           email: credentials.email as string,
           name: "User",
+          role: "user", // IMPORTANTE: Agregar role aquí
         };
       },
     }),
@@ -34,16 +35,20 @@ export const authConfig = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.role = user.role; // IMPORTANTE: Agregar role al token
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.role = token.role as string; // IMPORTANTE: Agregar role a la sesión
       }
       return session;
     },
   },
+  // CRÍTICO: Agregar el secret
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
 } satisfies NextAuthConfig;
 
 // Exportar handlers, auth, signIn, signOut

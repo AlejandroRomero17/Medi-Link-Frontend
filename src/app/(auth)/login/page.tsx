@@ -1,16 +1,19 @@
 ﻿"use client";
 
-import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
-import { LoginForm, AuthHeader, AuthFooter } from '@/features/auth/components';
-import { toast } from '@/hooks/use-toast';
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { LoginForm, AuthHeader, AuthFooter } from "@/features/auth/components";
+import { toast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const router = useRouter();
 
-  const handleSubmit = async (email: string, password: string) => {
+  const handleSubmit = async (
+    email: string,
+    password: string,
+  ) => {
     try {
-      const result = await signIn('credentials', {
+      const result = await signIn("credentials", {
         email,
         password,
         redirect: false,
@@ -26,7 +29,7 @@ export default function LoginPage() {
       }
 
       // Redirigir al dashboard después del login exitoso
-      router.push('/dashboard');
+      router.push("/dashboard");
       router.refresh();
     } catch {
       toast({
@@ -38,16 +41,18 @@ export default function LoginPage() {
   };
 
   const handleForgotPassword = () => {
-    router.push('/forgot-password');
+    router.push("/forgot-password");
   };
 
   return (
-    <div className='space-y-6'>
+    <div className="space-y-6 w-full">
       <AuthHeader />
-      <LoginForm 
-        onSubmit={handleSubmit}
-        onForgotPassword={handleForgotPassword}
-      />
+      <div className="flex justify-center w-full">
+        <LoginForm
+          onSubmit={handleSubmit}
+          onForgotPassword={handleForgotPassword}
+        />
+      </div>
       <AuthFooter />
     </div>
   );
