@@ -63,7 +63,7 @@ const navigationItems = [
   {
     title: "Dashboard",
     icon: LayoutDashboard,
-    href: "/doctor/dashboard",
+    href: "/doctor",
     active: true,
     badge: null,
   },

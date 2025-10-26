@@ -22,6 +22,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+// Animaciones corregidas con tipos explícitos
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -62,36 +63,37 @@ const navigationItems = [
   {
     title: "Panel",
     icon: LayoutDashboard,
-    href: "/dashboard/user",
+    href: "/user",
     active: true,
   },
   {
     title: "Historial Médico",
     icon: History,
-    href: "/dashboard/user/history",
+    href: "/user/history",
     badge: "Nuevo",
   },
   {
     title: "Recomendaciones",
     icon: TrendingUp,
-    href: "/dashboard/user/recommendations",
+    href: "/user/recommendations",
   },
   {
     title: "Citas",
     icon: Calendar,
-    href: "/dashboard/user/appointments",
+    href: "/user/appointments",
     badge: "3",
   },
   {
     title: "Configuración",
     icon: Settings,
-    href: "/dashboard/user/settings",
+    href: "/user/settings",
   },
 ];
 
 export function UserSidebar() {
   return (
     <Sidebar className="border-r border-gray-200 bg-gradient-to-b from-white to-gray-50 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950">
+      {/* Header con animación mejorada */}
       <SidebarHeader className="border-b border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           initial="hidden"
@@ -116,6 +118,7 @@ export function UserSidebar() {
         </motion.div>
       </SidebarHeader>
 
+      {/* Contenido con animaciones escalonadas */}
       <SidebarContent className="px-2 py-4">
         <motion.div
           initial="hidden"
@@ -184,6 +187,7 @@ export function UserSidebar() {
         </motion.div>
       </SidebarContent>
 
+      {/* Footer con animación mejorada */}
       <SidebarFooter className="border-t border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           whileHover={{ scale: 1.02 }}

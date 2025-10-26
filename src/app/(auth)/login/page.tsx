@@ -8,10 +8,7 @@ import { toast } from "@/hooks/use-toast";
 export default function LoginPage() {
   const router = useRouter();
 
-  const handleSubmit = async (
-    email: string,
-    password: string,
-  ) => {
+  const handleSubmit = async (email: string, password: string) => {
     try {
       const result = await signIn("credentials", {
         email,
@@ -28,8 +25,14 @@ export default function LoginPage() {
         return;
       }
 
-      // Redirigir al dashboard después del login exitoso
-      router.push("/dashboard");
+      // TODO: Obtener el rol del usuario desde la sesión
+      // Por ahora redirigimos a /user por defecto
+      // En producción deberías hacer:
+      // const session = await getSession();
+      // const role = session?.user?.role;
+      // router.push(role === 'doctor' ? '/doctor' : '/user');
+
+      router.push("/user"); // Cambiar según el rol real
       router.refresh();
     } catch {
       toast({

@@ -40,9 +40,4 @@ export default function LandingPage() {
     </div>
   );
 }
-// // src/app/page.tsx
-// import { redirect } from 'next/navigation';
 
-// export default function RootPage() {
-//   redirect('/marketing'); // o '/dashboard' según prefieras
-// }
