@@ -16,13 +16,15 @@ import {
   Calendar,
   ChevronRight,
   Heart,
-  History,
-  LayoutDashboard,
+  MapPin,
+  Search,
+  Clock,
+  FileText,
   Settings,
-  TrendingUp,
+  Stethoscope,
 } from "lucide-react";
 
-// Animaciones corregidas con tipos explícitos
+// Animaciones
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -61,39 +63,55 @@ const logoVariants: Variants = {
 
 const navigationItems = [
   {
-    title: "Panel",
-    icon: LayoutDashboard,
+    title: "Buscar Doctores",
+    icon: Search,
     href: "/user",
     active: true,
+    description: "Encuentra especialistas",
   },
   {
-    title: "Historial Médico",
-    icon: History,
-    href: "/user/history",
-    badge: "Nuevo",
-  },
-  {
-    title: "Recomendaciones",
-    icon: TrendingUp,
-    href: "/user/recommendations",
-  },
-  {
-    title: "Citas",
+    title: "Mis Citas",
     icon: Calendar,
     href: "/user/appointments",
     badge: "3",
+    description: "Ver citas programadas",
+  },
+  {
+    title: "Doctores Cercanos",
+    icon: MapPin,
+    href: "/user/nearby",
+    description: "Consultorios cerca de ti",
+  },
+  {
+    title: "Especialidades",
+    icon: Stethoscope,
+    href: "/user/specialties",
+    description: "Por tipo de doctor",
+  },
+  {
+    title: "Historial",
+    icon: Clock,
+    href: "/user/history",
+    description: "Mis consultas pasadas",
+  },
+  {
+    title: "Expediente Médico",
+    icon: FileText,
+    href: "/user/medical-records",
+    description: "Documentos y recetas",
   },
   {
     title: "Configuración",
     icon: Settings,
     href: "/user/settings",
+    description: "Ajustes de cuenta",
   },
 ];
 
 export function UserSidebar() {
   return (
     <Sidebar className="border-r border-gray-200 bg-gradient-to-b from-white to-gray-50 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950">
-      {/* Header con animación mejorada */}
+      {/* Header */}
       <SidebarHeader className="border-b border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           initial="hidden"
@@ -112,13 +130,13 @@ export function UserSidebar() {
               MediLink
             </h2>
             <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-              Mi Salud
+              Tu salud, tu elección
             </p>
           </div>
         </motion.div>
       </SidebarHeader>
 
-      {/* Contenido con animaciones escalonadas */}
+      {/* Contenido */}
       <SidebarContent className="px-2 py-4">
         <motion.div
           initial="hidden"
@@ -146,12 +164,12 @@ export function UserSidebar() {
                         : "text-gray-700 dark:text-gray-300"
                     )}
                   >
-                    <a href={item.href}>
-                      <div className="flex items-center gap-3">
+                    <a href={item.href} className="w-full">
+                      <div className="flex items-center gap-3 w-full">
                         <motion.div
                           whileHover={{ scale: 1.1 }}
                           className={cn(
-                            "p-1.5 rounded-md",
+                            "p-1.5 rounded-md flex-shrink-0",
                             item.active
                               ? "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400"
                               : "bg-gray-100 text-gray-600 group-hover:bg-blue-100/50 dark:bg-slate-800 dark:text-gray-400 dark:group-hover:bg-blue-900/50"
@@ -159,24 +177,31 @@ export function UserSidebar() {
                         >
                           <item.icon className="h-4 w-4" />
                         </motion.div>
-                        <span>{item.title}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        {item.badge && (
-                          <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className={cn(
-                              "text-xs px-2 py-0.5 rounded-full",
-                              item.active
-                                ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
-                                : "bg-gray-100 text-gray-800 dark:bg-slate-800 dark:text-gray-300"
-                            )}
-                          >
-                            {item.badge}
-                          </motion.span>
-                        )}
-                        <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-600" />
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium">{item.title}</p>
+                          {item.description && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-1 flex-shrink-0">
+                          {item.badge && (
+                            <motion.span
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              className={cn(
+                                "text-xs px-2 py-0.5 rounded-full",
+                                item.active
+                                  ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+                                  : "bg-gray-100 text-gray-800 dark:bg-slate-800 dark:text-gray-300"
+                              )}
+                            >
+                              {item.badge}
+                            </motion.span>
+                          )}
+                          <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-600" />
+                        </div>
                       </div>
                     </a>
                   </SidebarMenuButton>
@@ -187,7 +212,7 @@ export function UserSidebar() {
         </motion.div>
       </SidebarContent>
 
-      {/* Footer con animación mejorada */}
+      {/* Footer */}
       <SidebarFooter className="border-t border-gray-200 dark:border-slate-800 p-4">
         <motion.div
           whileHover={{ scale: 1.02 }}
@@ -198,12 +223,12 @@ export function UserSidebar() {
           <Avatar className="h-10 w-10 border-2 border-blue-500 dark:border-blue-400">
             <AvatarImage src="/avatars/user.jpg" alt="Usuario" />
             <AvatarFallback className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 font-semibold">
-              JD
+              AR
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
-              John Doe
+              Alejandro Romero
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
               Paciente • Ver perfil

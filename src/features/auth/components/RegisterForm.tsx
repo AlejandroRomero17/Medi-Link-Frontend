@@ -1,3 +1,4 @@
+// src/features/auth/components/RegisterForm.tsx
 "use client";
 
 import { useState } from "react";
@@ -9,6 +10,7 @@ import {
   User,
   Activity,
   Stethoscope,
+  Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,16 +20,25 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface RegisterFormProps {
-  onSubmit: (data: { name: string; email: string; password: string }) => void;
+  onSubmit: (data: {
+    nombre: string;
+    apellido: string;
+    email: string;
+    password: string;
+    telefono: string;
+  }) => void;
+  isLoading?: boolean;
 }
 
-export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
+export const RegisterForm = ({ onSubmit, isLoading }: RegisterFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    nombre: "",
+    apellido: "",
     email: "",
+    telefono: "",
     password: "",
     confirmPassword: "",
   });
@@ -45,11 +56,9 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
       return;
     }
 
-    onSubmit({
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-    });
+    // Extraer solo los campos necesarios, excluyendo confirmPassword
+    const { nombre, apellido, email, telefono, password } = formData;
+    onSubmit({ nombre, apellido, email, telefono, password });
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -135,24 +144,56 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="space-y-2">
-              <Label
-                htmlFor="name"
-                className="text-gray-900 dark:text-gray-200 font-medium"
-              >
-                Nombre completo
-              </Label>
-              <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Juan Pérez"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  className="pl-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
-                  required
-                />
+            {/* Nombre y Apellido */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label
+                  htmlFor="nombre"
+                  className="text-gray-900 dark:text-gray-200 font-medium"
+                >
+                  Nombre
+                </Label>
+                <div className="relative">
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
+                  <Input
+                    id="nombre"
+                    type="text"
+                    placeholder="Juan"
+                    value={formData.nombre}
+                    onChange={(e) =>
+                      handleInputChange("nombre", e.target.value)
+                    }
+                    className="pl-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
+                    required
+                    minLength={2}
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label
+                  htmlFor="apellido"
+                  className="text-gray-900 dark:text-gray-200 font-medium"
+                >
+                  Apellido
+                </Label>
+                <div className="relative">
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
+                  <Input
+                    id="apellido"
+                    type="text"
+                    placeholder="Pérez"
+                    value={formData.apellido}
+                    onChange={(e) =>
+                      handleInputChange("apellido", e.target.value)
+                    }
+                    className="pl-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
+                    required
+                    minLength={2}
+                    disabled={isLoading}
+                  />
+                </div>
               </div>
             </div>
 
@@ -173,6 +214,32 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   className="pl-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
                   required
+                  disabled={isLoading}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label
+                htmlFor="telefono"
+                className="text-gray-900 dark:text-gray-200 font-medium"
+              >
+                Teléfono
+              </Label>
+              <div className="relative">
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
+                <Input
+                  id="telefono"
+                  type="tel"
+                  placeholder="5512345678"
+                  value={formData.telefono}
+                  onChange={(e) =>
+                    handleInputChange("telefono", e.target.value)
+                  }
+                  className="pl-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
+                  required
+                  minLength={10}
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -197,11 +264,13 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
                   className="pl-12 pr-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
                   required
                   minLength={8}
+                  disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                  disabled={isLoading}
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -228,11 +297,13 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
                   className="pl-12 pr-12 h-12 rounded-xl border-gray-300 dark:border-slate-700 focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-500"
                   required
                   minLength={8}
+                  disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                  disabled={isLoading}
                 >
                   {showConfirmPassword ? (
                     <EyeOff size={20} />
@@ -251,6 +322,7 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
                   setAcceptTerms(checked as boolean)
                 }
                 className="border-gray-300 dark:border-slate-700 mt-1"
+                disabled={isLoading}
               />
               <Label
                 htmlFor="terms"
@@ -275,9 +347,10 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
 
             <Button
               type="submit"
-              className="w-full h-12 text-base font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+              disabled={isLoading}
+              className="w-full h-12 text-base font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              Crear cuenta
+              {isLoading ? "Creando cuenta..." : "Crear cuenta"}
             </Button>
           </form>
 
@@ -294,7 +367,8 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
 
           <button
             type="button"
-            className="w-full flex items-center justify-center gap-3 h-12 border-2 border-gray-300 dark:border-slate-700 rounded-xl hover:bg-white dark:hover:bg-slate-900 hover:border-gray-400 dark:hover:border-slate-600 transition-all duration-200 font-medium text-gray-900 dark:text-white"
+            disabled={isLoading}
+            className="w-full flex items-center justify-center gap-3 h-12 border-2 border-gray-300 dark:border-slate-700 rounded-xl hover:bg-white dark:hover:bg-slate-900 hover:border-gray-400 dark:hover:border-slate-600 transition-all duration-200 font-medium text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path

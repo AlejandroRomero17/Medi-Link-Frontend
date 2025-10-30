@@ -499,3 +499,37 @@
 *:focus-visible {
   @apply outline-2 outline-offset-2 outline-ring;
 }
+
+
+/* Estilos de Leaflet */
+@import 'leaflet/dist/leaflet.css';
+
+/* Fix para los iconos de Leaflet en Next.js */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+}
+
+/* Personalización de controles */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-zoom a {
+  border-radius: 4px !important;
+}
+
+/* Marker personalizado */
+.leaflet-marker-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}

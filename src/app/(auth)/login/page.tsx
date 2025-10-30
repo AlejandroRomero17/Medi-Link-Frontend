@@ -26,7 +26,7 @@ export default function LoginPage() {
       }
 
       // TODO: Obtener el rol del usuario desde la sesión
-      // Por ahora redirigimos a /user por defecto
+      // Por ahora redirigimos a /user por de63fecto
       // En producción deberías hacer:
       // const session = await getSession();
       // const role = session?.user?.role;
@@ -60,3 +60,6 @@ export default function LoginPage() {
     </div>
   );
 }
+
+
+
