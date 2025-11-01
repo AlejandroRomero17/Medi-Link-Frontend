@@ -1,19 +1,57 @@
-// src/services/auth-service.ts
+//src\services\auth-service.ts
 import { apiClient } from "@/lib/api/client";
 import { API_ENDPOINTS } from "@/lib/config/env";
 import {
-  UsuarioCreate,
   UsuarioLogin,
   UsuarioResponse,
   Token,
 } from "@/types/api.types";
 import { JWTPayload } from "@/types/jwt.types";
+import {
+  PatientRegisterData,
+  DoctorRegisterData,
+  LegacyRegisterData,
+} from "@/types/auth.types";
 
 export const authService = {
   /**
-   * Register a new user (returns Token with usuario included)
+   * Register a new patient (REGISTRO COMBINADO - RECOMENDADO)
    */
-  async register(data: UsuarioCreate): Promise<Token> {
+  async registerPatient(data: PatientRegisterData): Promise<Token> {
+    const response = await apiClient.post<Token>(
+      API_ENDPOINTS.REGISTRO.PACIENTE,
+      data
+    );
+
+    if (response.access_token) {
+      apiClient.saveAuthData(response.access_token);
+      this.setCurrentUser(response.usuario);
+    }
+
+    return response;
+  },
+
+  /**
+   * Register a new doctor (REGISTRO COMBINADO - RECOMENDADO)
+   */
+  async registerDoctor(data: DoctorRegisterData): Promise<Token> {
+    const response = await apiClient.post<Token>(
+      API_ENDPOINTS.REGISTRO.DOCTOR,
+      data
+    );
+
+    if (response.access_token) {
+      apiClient.saveAuthData(response.access_token);
+      this.setCurrentUser(response.usuario);
+    }
+
+    return response;
+  },
+
+  /**
+   * Legacy register (solo crea usuario, NO PERFIL)
+   */
+  async registerLegacy(data: LegacyRegisterData): Promise<Token> {
     const response = await apiClient.post<Token>(
       API_ENDPOINTS.AUTH.REGISTER,
       data
@@ -57,7 +95,7 @@ export const authService = {
    * Get current user from API (using token)
    */
   async getCurrentUserFromAPI(): Promise<UsuarioResponse> {
-    return await apiClient.get<UsuarioResponse>("/api/usuarios/me");
+    return await apiClient.get<UsuarioResponse>(API_ENDPOINTS.AUTH.ME);
   },
 
   /**

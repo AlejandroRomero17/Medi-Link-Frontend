@@ -1,6 +1,4 @@
-// src/types/auth.types.ts
-
-import { UsuarioResponse } from "./api.types";
+import { UsuarioResponse, PacienteBase, DoctorBase } from "./api.types";
 
 /**
  * Datos para login
@@ -12,18 +10,22 @@ export interface LoginCredentials {
 }
 
 /**
- * Datos para registro de paciente
+ * Datos para registro COMBINADO de paciente (NUEVO)
  */
 export interface PatientRegisterData {
-  nombre: string;
-  apellido: string;
-  email: string;
-  password: string;
-  telefono: string;
+  usuario: {
+    nombre: string;
+    apellido: string;
+    email: string;
+    password: string;
+    telefono: string;
+    tipo_usuario: "paciente";
+  };
+  paciente: PacienteBase;
 }
 
 /**
- * Datos para registro de doctor
+ * Datos para registro COMBINADO de doctor (NUEVO)
  */
 export interface DoctorRegisterData {
   usuario: {
@@ -32,14 +34,21 @@ export interface DoctorRegisterData {
     email: string;
     password: string;
     telefono: string;
+    tipo_usuario: "doctor";
   };
-  doctor: {
-    especialidad: string;
-    cedula_profesional: string;
-    consultorio?: string;
-    horario_atencion?: string;
-    costo_consulta?: number;
-  };
+  doctor: DoctorBase;
+}
+
+/**
+ * Datos para registro LEGACY (solo usuario)
+ */
+export interface LegacyRegisterData {
+  nombre: string;
+  apellido: string;
+  email: string;
+  password: string;
+  telefono: string;
+  tipo_usuario: "paciente" | "doctor" | "admin";
 }
 
 /**
@@ -60,6 +69,7 @@ export interface AuthContextType extends AuthState {
   logout: () => void;
   registerPatient: (data: PatientRegisterData) => Promise<void>;
   registerDoctor: (data: DoctorRegisterData) => Promise<void>;
+  registerLegacy: (data: LegacyRegisterData) => Promise<void>; // Para compatibilidad
 }
 
 /**

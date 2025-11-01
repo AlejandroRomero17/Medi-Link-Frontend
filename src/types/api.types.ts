@@ -43,13 +43,6 @@ export interface UsuarioLogin {
   password: string;
 }
 
-// // ============ TOKEN ============
-// export interface Token {
-//   access_token: string;
-//   token_type: string;
-//   usuario: UsuarioResponse;
-// }
-
 // ============ PACIENTES ============
 export interface PacienteBase {
   fecha_nacimiento: string; // ISO date
